@@ -1,7 +1,7 @@
 /* Product Catalog Container */
 .product-catalog-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f6b4a 0%, #145d31 100%);
     padding: 40px 20px;
 }
 
@@ -139,11 +139,11 @@
 .product-price {
     font-size: 26px;
     font-weight: 700;
-    color: #667eea;
+    color: #145d31;
 }
 
 .product-category {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f6b4a 0%, #145d31 100%);
     color: white;
     padding: 6px 16px;
     border-radius: 20px;

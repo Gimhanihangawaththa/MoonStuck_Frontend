@@ -1,7 +1,7 @@
 /* Admin Container */
 .admin-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f6b4a 0%, #145d31 100%);
     padding: 40px 20px;
 }
 
@@ -57,7 +57,7 @@
 
 .tab-btn.active {
     background: white;
-    color: #667eea;
+    color: #145d31;
     border-color: white;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
@@ -154,9 +154,9 @@
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #145d31;
     background: white;
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 4px rgba(20, 93, 49, 0.1);
 }
 
 .form-group textarea {
@@ -190,7 +190,7 @@
 
 .fetch-btn {
     padding: 14px 28px;
-    background: #667eea;
+    background: #145d31;
     color: white;
     border: none;
     border-radius: 12px;
@@ -202,9 +202,9 @@
 }
 
 .fetch-btn:hover {
-    background: #5568d3;
+    background: #0f4d27;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px rgba(20, 93, 49, 0.4);
 }
 
 /* File Input */
@@ -216,7 +216,7 @@
 
 .file-input::-webkit-file-upload-button {
     padding: 10px 20px;
-    background: #667eea;
+    background: #145d31;
     color: white;
     border: none;
     border-radius: 8px;
@@ -226,13 +226,13 @@
 }
 
 .file-input::-webkit-file-upload-button:hover {
-    background: #5568d3;
+    background: #0f4d27;
 }
 
 /* Submit Buttons */
 .submit-btn {
     padding: 16px 32px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f6b4a 0%, #145d31 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -241,12 +241,12 @@
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 10px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 15px rgba(20, 93, 49, 0.4);
 }
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 6px 20px rgba(20, 93, 49, 0.6);
 }
 
 .submit-btn:active {
@@ -254,12 +254,12 @@
 }
 
 .update-btn {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    background: linear-gradient(135deg, #20b86b 0%, #17a05d 100%);
+    box-shadow: 0 4px 15px rgba(32, 184, 107, 0.4);
 }
 
 .update-btn:hover {
-    box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+    box-shadow: 0 6px 20px rgba(32, 184, 107, 0.6);
 }
 
 .delete-btn {
