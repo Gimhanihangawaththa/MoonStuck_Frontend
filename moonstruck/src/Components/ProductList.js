@@ -4,42 +4,63 @@ import './productlist.css'
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    // Fetch products when the component mounts
     useEffect(() => {
         axios.get('http://localhost:5000/products')
             .then(response => {
                 setProducts(response.data);
+                setLoading(false);
             })
             .catch(error => {
                 console.error('Error fetching products:', error);
+                setLoading(false);
             });
     }, []);
 
     return (
-        <div className='product-list-full'>
-            <h2>Product Catalog</h2>
-            <div className='product-list-mid'>
-                {products.length > 0 ? (
+        <div className='product-catalog-container'>
+            <div className='catalog-header'>
+                <h1>Product Catalog</h1>
+                <p>Browse all available products</p>
+                <div className='product-count'>{products.length} Products</div>
+            </div>
+            
+            <div className='product-grid'>
+                {loading ? (
+                    <div className='loading-state'>
+                        <div className='spinner'></div>
+                        <p>Loading products...</p>
+                    </div>
+                ) : products.length > 0 ? (
                     products.map(product => (
-                        <div className='list-item-img' key={product.id}>
-                            <h2>{product.id}</h2>
-                            <h3>{product.name}</h3>
-                            <p>{product.description}</p>
-                            <p>Price: ${product.price}</p>
-                        
+                        <div className='product-card' key={product.id}>
                             {product.image_url && (
-                              
-                                <img className='list-img'
-                                    src={product.image_url}
-                                    alt={product.name}
-                                    width="150"
-                                />
+                                <div className='product-image-container'>
+                                    <img
+                                        src={product.image_url}
+                                        alt={product.name}
+                                        className='product-image'
+                                    />
+                                    <div className='product-id-badge'>ID: {product.id}</div>
+                                </div>
                             )}
+                            <div className='product-info'>
+                                <h3 className='product-name'>{product.name}</h3>
+                                <p className='product-description'>{product.description}</p>
+                                <div className='product-meta'>
+                                    <div className='product-price'>${product.price}</div>
+                                    <div className='product-category'>{product.category}</div>
+                                </div>
+                            </div>
                         </div>
                     ))
                 ) : (
-                    <p>No products available.</p>
+                    <div className='empty-state'>
+                        <div className='empty-icon'>📦</div>
+                        <h3>No products available</h3>
+                        <p>Add your first product to get started</p>
+                    </div>
                 )}
             </div>
         </div>
