@@ -16,19 +16,26 @@ import collections_banner from './Components/Assets/collections_banner.jpg'
 import ProductForm from './Components/ProductForm';
 import ProductList from './Components/ProductList';
 import SingleProduct from './Pages/SingleProduct';
+import { useState } from 'react';
 
 
 
 
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLoginSuccess = () => setIsAuthenticated(true);
+  const handleLogout = () => setIsAuthenticated(false);
+
   return (
     <div>
        <ShopContextProvider>
       <BrowserRouter>
-      <Navbar/>
+      <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Login onLoginSuccess={handleLoginSuccess} />}/>
+        <Route path='/home' element={<Home/>}/>
         <Route path='/SHOP-BY-BRANDS' element={<ShopCategory banner={brand_banner} category='SHOP-BY-BRANDS'/>}/>
         <Route path='/NEW-ARRIVALS' element={<ShopCategory banner={newarrivals_banner}category='NEW-ARRIVALS'/>}/>
         <Route path='/COLLECTIONS' element={<ShopCategory2 banner={collections_banner} category='COLLECTIONS'/>}/>
@@ -39,7 +46,7 @@ function App() {
           <Route path=':productId' element={<Product/>}/>
         </Route>
         <Route path='/Cart' element={<Cart/>}/> 
-        <Route path='/login' element={<Login />} /> 
+        <Route path='/login' element={<Login onLoginSuccess={handleLoginSuccess} />} /> 
         <Route path='/signup' element={<Signup />} /> 
       
           </Routes>

@@ -148,11 +148,19 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import cart_icon from "../Assets/cart_icon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated = false, onLogout }) => {
   const [menu, setMenu] = useState("HOME");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    if (onLogout) {
+      onLogout();
+    }
+    navigate('/login');
+  };
 
   return (
     <div className="navbar">
@@ -178,9 +186,13 @@ const Navbar = () => {
             )}
           </div>
 
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
+          {!isAuthenticated ? (
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          ) : (
+            <button onClick={handleLogout}>Logout</button>
+          )}
 
           <Link to="/Cart" className="cart-wrapper">
             <img src={cart_icon} alt="cart" />
@@ -193,7 +205,7 @@ const Navbar = () => {
       <div className="nav-minibar">
         <ul className="nav-menu">
           <li onClick={() => setMenu("HOME")}>
-            <Link to="/">HOME</Link>
+            <Link to="/home">HOME</Link>
             {menu === "HOME" && <hr />}
           </li>
 
