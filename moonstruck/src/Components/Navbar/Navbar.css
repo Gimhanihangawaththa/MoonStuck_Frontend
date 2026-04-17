@@ -151,21 +151,27 @@
 .navbar {
   width: 100%;
   background: rgba(248, 248, 248, 1);
+  --nav-padding-x: clamp(16px, 4vw, 60px);
+  --nav-top-height: clamp(72px, 8vw, 96px);
+  --nav-logo-width: clamp(72px, 8vw, 104px);
+  --nav-logo-height: clamp(52px, 7vw, 76px);
+  --nav-control-height: 34px;
 }
 
 /* ===== TOP BAR ===== */
 .up {
-  height: 120px;
+  min-height: var(--nav-top-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 60px;
+  padding: 0 var(--nav-padding-x);
+  gap: 24px;
 }
 
 /* ===== LOGO ===== */
 .nav-logo {
-  width: 120px;
-  height: 100px;
+  width: var(--nav-logo-width);
+  height: var(--nav-logo-height);
   background-image: url("../Assets/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -177,16 +183,19 @@
 .nav-login-cart {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   position: relative;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 /* ===== BUTTONS ===== */
 .nav-login-cart button {
-  width: 90px;
-  height: 32px;
+  min-width: 88px;
+  height: var(--nav-control-height);
+  padding: 0 16px;
   border: 1px solid #145d31;
-  border-radius: 50px;
+  border-radius: 999px;
   background-color: white;
   cursor: pointer;
   font-size: 14px;
@@ -208,20 +217,20 @@
 }
 
 .cart-wrapper img {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .nav-cart-count {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 20px;
-  height: 20px;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
   background: red;
   color: white;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -235,7 +244,7 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 40px;
+  top: calc(var(--nav-control-height) + 6px);
   right: 0;
   background: rgb(33, 59, 60);
   list-style: none;
@@ -271,9 +280,10 @@
 
 .nav-menu {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 80px);
   list-style: none;
-  padding: 16px 40px;
+  padding: 12px var(--nav-padding-x);
   width: 100%;
 }
 
@@ -287,7 +297,7 @@
 .nav-menu li a {
   text-decoration: none;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   transition: color 0.3s ease;
 }
@@ -308,7 +318,7 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .nav-menu {
-    gap: 40px;
+    gap: 28px;
   }
   
   .up {
@@ -317,24 +327,37 @@
 }
 
 @media (max-width: 768px) {
-  .nav-menu {
-    gap: 20px;
-    font-size: 14px;
-    padding: 12px 20px;
-  }
-
-  .nav-logo {
-    width: 80px;
-    height: 70px;
-  }
-
-  .nav-login-cart {
+  .up {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 12px;
+    padding-bottom: 12px;
     gap: 12px;
   }
 
+  .nav-login-cart {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    gap: 16px 22px;
+    padding: 10px 16px;
+  }
+
+  .nav-logo {
+    width: 72px;
+    height: 52px;
+  }
+
+  .nav-login-cart {
+    gap: 10px;
+  }
+
   .nav-login-cart button {
-    width: 70px;
-    height: 28px;
+    min-width: 72px;
+    height: 30px;
     font-size: 12px;
   }
 }
